@@ -1,0 +1,3 @@
+version 0.0.1
+	- Initial version of provman.
+	- Contains 3 plugins for oFono, SyncEvolution and Evolution
