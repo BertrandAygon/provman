@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start("")
+manager.Set("/applications/sync/target-config@exchange/name","SyncEvolution")
+manager.Set("/applications/sync/target-config@exchange/username","mark.d.ryan@intel.com")
+manager.Set("/applications/sync/target-config@exchange/eas-contacts/sync","two-way");
+manager.Set("/applications/sync/target-config@exchange/eas-calendar/sync","two-way");
+manager.Set("/applications/sync/target-config@exchange/eas-memo/sync","two-way");
+manager.Set("/applications/sync/target-config@exchange/eas-todo/sync","two-way");
+manager.Set("/applications/sync/exchange/url","local://@exchange");
+manager.Set("/applications/sync/exchange/contacts/sync","two-way");
+manager.Set("/applications/sync/exchange/contacts/uri","addressbook");
+manager.Set("/applications/sync/exchange/calendar/sync","two-way");
+manager.Set("/applications/sync/exchange/calendar/uri","calendar");
+manager.Set("/applications/sync/exchange/memo/sync","two-way");
+manager.Set("/applications/sync/exchange/memo/uri","memo");
+manager.Set("/applications/sync/exchange/todo/sync","two-way");
+manager.Set("/applications/sync/exchange/todo/uri","todo");
+manager.End()

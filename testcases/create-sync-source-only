@@ -1,0 +1,17 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start("")
+manager.Set("/applications/sync/cincinnatus/todo/format","text/calendar");
+manager.Set("/applications/sync/cincinnatus/todo/sync","two-way");
+manager.Set("/applications/sync/cincinnatus/todo/uri","task");
+manager.Set("/applications/sync/cincinnatus/calendar/format", "text/calendar");
+manager.Set("/applications/sync/cincinnatus/calendar/sync","two-way");
+manager.Set("/applications/sync/cincinnatus/calendar/uri","event");
+manager.End()

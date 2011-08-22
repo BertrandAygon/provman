@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+
+if len(sys.argv) < 2:
+	imsi = ""
+else:
+	imsi = sys.argv[1];
+manager.Start(imsi)
+manager.End()

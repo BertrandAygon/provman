@@ -1,0 +1,83 @@
+{
+   g_type_init
+   Memcheck:Leak
+   ...
+   fun:g_type_init
+   fun:provman_run
+}
+
+{
+   clone
+   Memcheck:Leak
+   ...
+   fun:start_thread
+   fun:clone
+}
+
+{
+   g_bus_own_name
+   Memcheck:Leak
+   ...
+   fun:g_bus_own_name
+   fun:provman_run
+}
+
+{
+   g_dbus_node_info_new_for_xml
+   Memcheck:Leak
+   ...
+   fun:g_dbus_node_info_new_for_xml
+   fun:provman_run
+}
+
+{
+   g_type_register_static
+   Memcheck:Leak
+   ...
+   fun:g_type_register_static
+   ...
+   fun:provman_run
+}
+
+{
+   g_type_add_interface_static
+   Memcheck:Leak
+   ...
+   fun:g_type_add_interface_static
+   ...
+   fun:provman_run
+}
+
+{
+   g_dbus_proxy_new_for_bus
+   Memcheck:Leak
+   ...
+   fun:g_dbus_proxy_new_for_bus
+   ...
+}
+
+{
+   g_simple_async_result_complete
+   Memcheck:Leak
+   ...
+   fun:g_simple_async_result_complete
+   ...
+   fun:provman_run
+}
+
+{
+   gconf_client_get_default
+   Memcheck:Leak
+   ...
+   fun:gconf_client_get_default
+   ...
+}
+
+{
+   g_get_home_dir
+   Memcheck:Leak
+   ...
+   fun:g_get_home_dir
+   ...
+}
+

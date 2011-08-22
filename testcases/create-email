@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start("")
+manager.Set("/applications/email/test/address", "markus.tulius@pintlygoodness.com")
+manager.Set("/applications/email/test/incoming/host", "pop3.pintlygoodness.com")
+manager.Set("/applications/email/test/incoming/type", "pop")
+manager.Set("/applications/email/test/incoming/username", "markus.tulius")
+manager.Set("/applications/email/test/incoming/usessl", "always")
+manager.Set("/applications/email/test/incoming/authtype", "PLAIN")
+manager.Set("/applications/email/test/name", "Markus T Cicero")
+manager.Set("/applications/email/test/outgoing/host", "smtp.pintlygoodness.com")
+manager.Set("/applications/email/test/outgoing/type","smtp")
+manager.Set("/applications/email/test/outgoing/username","")
+manager.Set("/applications/email/test/outgoing/usessl","never")
+manager.End()

@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SystemBus()
+
+if len(sys.argv) < 2:
+	imsi = ""
+else:
+	imsi = sys.argv[1]
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start(imsi)
+manager.Set("/telephony/mms/apn","mms-apn")
+manager.Set("/telephony/mms/name","MMS APN")
+manager.Set("/telephony/mms/username","markus")
+manager.Set("/telephony/mms/password","didius")
+manager.Set("/telephony/mms/mmsc","orange.mms.fr")
+manager.Set("/telephony/mms/proxy","proxy.orange.mms.fr:8080")
+manager.End()

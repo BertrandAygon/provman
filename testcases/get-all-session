@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+if len(sys.argv) < 2:
+	print "Usage: get-all key [imsi]\n"
+	System.Exit(1)
+
+if len(sys.argv) < 3:
+	imsi = ""
+else:
+	imsi = sys.argv[2];
+
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start(imsi)
+settings =  manager.GetAll(sys.argv[1])
+keys = sorted(settings.keys())
+for key in keys:
+	print key + " = " + settings[key]
+manager.End()

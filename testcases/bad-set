@@ -1,0 +1,37 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SystemBus()
+
+if len(sys.argv) < 2:
+	imsi = ""
+else:
+	imsi = sys.argv[1];
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start(imsi)
+try:
+	manager.Set("/telephony/contexts/test/AccessPointName","test-apn")
+except dbus.exceptions.DBusException:
+       pass
+try:	
+	manager.Set("/telephony/test/name","Test APN")
+except dbus.exceptions.DBusException:
+       pass
+try:
+	manager.Set("/telephony/mms/unsupported","markus")
+except dbus.exceptions.DBusException:
+       pass
+try:
+	manager.Set("/telephony/contexts/","tulius")
+except dbus.exceptions.DBusException:
+       pass
+try:
+	manager.Set("/telephony/contexts/test","tulius")
+except dbus.exceptions.DBusException:
+       pass
+
+manager.End()

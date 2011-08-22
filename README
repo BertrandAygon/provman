@@ -1,0 +1,37 @@
+Introduction:
+-------------
+
+Provman is a middleware component that simplifies the process of writing
+device management clients.  It reduces code duplication on devices that
+need to support multiple device management clients and it isolates these
+clients from changes to the underlying middleware.  There are many device
+management use cases, e.g., Provisioning, Lock and Wipe, Diagnostics,
+firmware update, etc.  Provman is concerned with the first of these use
+cases, i.e., Provisioning.
+
+Compiling Provman:
+-----------------
+
+Provman is documented using doxygen.  Before you can access this
+documentation you need to build it.  You can do so by building provman.
+
+Provman has a number of direct dependencies, currently glibc, glib, gio,
+libedataserver, gconf and camel.  Development versions of these packages
+must be installed before it can be compiled.  On Meego the relevant
+packages can be installed as follows:
+
+sudo zypper install doxygen (if you want to build the docs)
+sudo zypper install gcc-c++
+sudo zypper install glib2-devel
+sudo zypper install evolution-data-server-devel
+
+Once you have installed the dependencies, cd to the provman directory and
+type
+
+autoreconf -i
+./configure
+make
+sudo make install
+
+Once the build is finished please consult, doc/doxygen/html/index.html for
+more information.

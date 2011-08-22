@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=com.intel.provman.server
+Exec=@prefix@/bin/provman-system
+User=root
+

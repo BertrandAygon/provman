@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+import dbus
+import sys
+
+bus = dbus.SessionBus()
+
+manager = dbus.Interface(bus.get_object('com.intel.provman.server', '/com/intel/provman'),
+					'com.intel.provman.Settings')
+manager.Start("")
+manager.Set("/applications/sync/tulius/username","markus")
+manager.Set("/applications/sync/tulius/password","clodia")
+manager.Set("/applications/sync/tulius/url","http://localhost")
+manager.Set("/applications/sync/tulius/name","Markus Tulius Cicero")
+manager.Set("/applications/sync/tulius/todo/format","text/calendar");
+manager.Set("/applications/sync/tulius/todo/sync","two-way");
+manager.Set("/applications/sync/tulius/todo/uri","task");
+manager.Set("/applications/sync/tulius/calendar/format", "text/calendar");
+manager.Set("/applications/sync/tulius/calendar/sync","two-way");
+manager.Set("/applications/sync/tulius/calendar/uri","event");
+manager.End()

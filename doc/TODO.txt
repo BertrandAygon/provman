@@ -1,0 +1,56 @@
+TODOs:
+------
+
+Provman:
+-------
+
+* Implement Abort Command
+
+  Abort allows a client to cancel any modifications it has made during its 
+  management session.  Abort must be called after Start has been called but
+  before End.  Abort like End terminates the session.  However, the changes
+  made during the session are discarded and are not passed to the plugins.
+
+* Verify that End is asynchronous
+
+  The End command should not return until all the plugins have returned
+  from their sync out functions.  Is this happening?
+
+* Introspection
+
+  Need to add an introspection interface so that clients can discover which
+  settings are available and which values they can assume.
+
+* Meta data
+ 
+  Need to allow meta data to be associated with settings.  Needed for OMA DM
+  and OMA CP.
+
+EDS Plugin:
+
+* Implement validate_set
+
+* Listen to notifications and update internal data model
+
+SyncE Plugin:
+
+* Implement validate_set
+
+* Add RemoteDeviceId parameter
+
+* Listen to notifications and update internal data model
+
+oFono Plugin
+
+* Check the use of cancellable in the oFono plugin.
+
+  Do we really need to destroy the cancellable object and create a new one
+  each time we invoke an asynchronous command.
+
+* Listen to notifications and update internal data model
+
+MeeGo Login Plugin
+
+* Needs to be written.
+
+  
