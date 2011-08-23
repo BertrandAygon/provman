@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([provman], [0.0.1], [mark.d.ryan@intel.com])
+AC_INIT([provman], [0.0.2], [mark.d.ryan@intel.com])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
