@@ -111,7 +111,7 @@
  * \a com.intel.provman.server on the relevant D-Bus bus.  Each instance exposes
  * a single D-Bus object, \a /com/intel/provman that implements a single
  * interface, \a com.intel.provman.Settings.  Device management clients manage
- * the device by invoking methods on this interface.  A clients must always initiate a 
+ * the device by invoking methods on this interface.  A client must always initiate a 
  * management session by calling the #Start method.  Once the #Start method has returned
  * successfully it can call additional methods such as #Get, #Set and #Delete to get,
  * set and delete various settings.  When a client has finished managing the device
@@ -120,7 +120,7 @@
  * by the #Start method.  If a device management client has successfully invoked the
  * #Start method, no other device management clients will be able to manage the device
  * via the same provman instance until the first client calls #End.  If a second
- * client attempts to do so, its call to #Start will not return until until the first
+ * client attempts to do so, its call to #Start will not return until the first
  * client has called #End.  Attempts to call any of the other methods, such as #Get or
  * #Set, by a client before it has successfully called #Start will fail.
  *
