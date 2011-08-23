@@ -23,6 +23,8 @@ AC_ARG_WITH([email],
 	[  --with-email indicates which email subsystem to use (evolution or none) ], 
 	[ email=${withval} ], [ email=evolution ] )
 
+AC_ARG_ENABLE([docs], [  --enable-docs compiles doxygen documentation during build ],
+		      [ docs=${enableval} ], [ docs=yes] )		      
 
 if test "x${telephony}" = xofono; then
 AC_DEFINE([PROVMAN_OFONO], 1, [ ofono plugin enabled ])
@@ -115,6 +117,10 @@ AC_CONFIG_FILES([Makefile
 		 src/system/provman.conf
 		 doc/Makefile])
 
+if test "x${docs}" = xno; then
+DOXYGEN=
+fi
+
 AM_CONDITIONAL([HAVE_DOXYGEN], [test -n "$DOXYGEN"])
 AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([doc/doxygen/doxyfile
 					doc/doxygen/Makefile])])
@@ -131,6 +137,7 @@ Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
 Doxygen: ${DOXYGEN:-NONE} 
 
 Package features: 
+	enable-docs: ${docs}
 	enable-logging: ${logging} 
 	with-telephony: ${telephony}
 	with-sync: ${sync}
