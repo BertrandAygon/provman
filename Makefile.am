@@ -63,6 +63,11 @@ session_sources += plugins/synce.c
 session_sources += plugins/synce.h
 endif
 
+if TEST
+testdir = $(pkglibdir)/test
+dist_test_SCRIPTS = $(pm_testcases)
+endif
+
 bin_PROGRAMS = provman-session provman-system
 provman_session_SOURCES = $(pm_headers) $(pm_sources) $(session_sources)
 provman_session_CPPFLAGS = -I include $(GLIB_CFLAGS)  $(GIO_CFLAGS) $(LIBEDS_CFLAGS) \
@@ -82,7 +87,7 @@ dist_dbussystem_DATA = src/system/com.intel.provman.server.service
 dbusconfdir = @DBUS_CONF_DIR@
 dist_dbusconf_DATA = src/system/provman.conf
 
-EXTRA_DIST = $(pm_docs) $(pm_testcases)
+EXTRA_DIST = $(pm_docs)
 
 SUBDIRS = doc
 

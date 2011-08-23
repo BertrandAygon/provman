@@ -24,7 +24,10 @@ AC_ARG_WITH([email],
 	[ email=${withval} ], [ email=evolution ] )
 
 AC_ARG_ENABLE([docs], [  --enable-docs compiles doxygen documentation during build ],
-		      [ docs=${enableval} ], [ docs=yes] )		      
+		      [ docs=${enableval} ], [ docs=yes] )
+
+AC_ARG_ENABLE([tests], [  --enable-test installs test cases],
+		       [ tests=${enableval} ], [ tests=no] )
 
 if test "x${telephony}" = xofono; then
 AC_DEFINE([PROVMAN_OFONO], 1, [ ofono plugin enabled ])
@@ -43,7 +46,7 @@ AC_DEFINE([PROVMAN_EVOLUTION], 1, [ evolution plugin enabled ])
 fi
 
 AM_CONDITIONAL([HAVE_EVOLUTION], [test "x${email}" = xevolution])
-
+AM_CONDITIONAL([TEST], test "x${tests}" = xyes)
 
 # Checks for libraries.
 PKG_PROG_PKG_CONFIG(0.16)
@@ -138,6 +141,7 @@ Doxygen: ${DOXYGEN:-NONE}
 
 Package features: 
 	enable-docs: ${docs}
+	enable-tests: ${tests}
 	enable-logging: ${logging} 
 	with-telephony: ${telephony}
 	with-sync: ${sync}
